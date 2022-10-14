@@ -11,14 +11,18 @@ Website: http://www.webthemez.com/
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta content="" name="description" />
         <meta content="webthemez" name="author" />
-        <title></title>
+        <title>Sistem Pelaporan KTP</title>
         <!-- Bootstrap Styles-->
         <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet" />
             <!-- FontAwesome Styles-->
         <link href="{{ asset('assets/css/font-awesome.css') }}" rel="stylesheet" />
             <!-- Custom Styles-->
         <link href="{{ asset('assets/css/custom-styles.css') }}" rel="stylesheet" />
-            <!-- Google Fonts-->
+
+
+        <link href="{{ asset('assets/css/toastr.min.css') }}" rel="stylesheet" />
+
+        <!-- Google Fonts-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         @stack('style')
     </head>
@@ -33,10 +37,33 @@ Website: http://www.webthemez.com/
     <script src="{{ asset('assets/js/jquery-1.10.2.js') }}"></script>
         <!-- Bootstrap Js -->
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <!-- Metis Menu Js -->
-    <script src="{{ asset('assets/js/jquery.metisMenu.js') }}"></script>
-        <!-- Custom Js -->
-    <script src="{{ asset('assets/js/custom-scripts.js') }}"></script>
+
+    
+
+    <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
+
+    @if (Session::has('typeToast') && Session::has('messageToast'))
+        <script>
+            toastr.options = {
+                closeButton : true
+            }
+            var type = "{{ Session::get('typeToast', 'info') }}";
+            switch(type){
+                case 'info':
+                    toastr.info("{{ Session::get('messageToast') }}");
+                    break;
+                case 'warning':
+                    toastr.warning("{{ Session::get('messageToast') }}");
+                    break;
+                case 'success':
+                    toastr.success("{{ Session::get('messageToast') }}");
+                    break;
+                case 'error':
+                    toastr.error("{{ Session::get('messageToast') }}");
+                    break;
+            }
+        </script>
+    @endif
 
     @stack('script')
 
