@@ -33,19 +33,19 @@
                     <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="inputUsername" placeholder="Username" name="username" value="{{old('username')}}">
+                        @error('username')
+                        <small id="usernameid" class="text-danger">{{$message}}</small>
+                        @enderror
                     </div>
-                    @error('username')
-                    <small id="usernameid" class="text-danger">{{$message}}</small>
-                    @enderror
                 </div>
                 <div class="form-group @error('password') has-error @enderror">
                     <label for="inputEmail3" class="col-sm-2 control-label">Password</label>
                     <div class="col-sm-10">
                         <input type="password" class="form-control" id="inputPassword" placeholder="password" name="password"">
+                        @error('password')
+                        <small id="passwordid" class="text-danger">{{$message}}</small>
+                        @enderror
                     </div>
-                    @error('password')
-                    <small id="passwordid" class="text-danger">{{$message}}</small>
-                    @enderror
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">

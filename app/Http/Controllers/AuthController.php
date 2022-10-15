@@ -62,8 +62,9 @@ class AuthController extends Controller
 
         $toast = array(
             'typeToast' => 'success',
-            'messageToast' => 'Berhasil Mengupdate '.$this->title,
+            'messageToast' => 'Berhasil melakukan register.',
         );
+        return redirect()->route('login')->withInput($request->only('username'))->with($toast);
     }
 
     public function logout()
