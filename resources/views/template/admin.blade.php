@@ -32,27 +32,26 @@
     <div id="page-wrapper">
         <div class="header">
             <h1 class="page-header">
-                Empty Page <small>Create new page.</small>
+                @if(!empty($title)) {{$title}} @else Selamat datang {{Auth::user()->username}} @endif<small>@if(!empty($subtitle)) {{$subtitle}}. @endif</small>
             </h1>
+            @if ($breadcrumb)
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Empty</a></li>
-                <li class="active">Data</li>
+                @foreach ($breadcrumb as $key => $item)
+                    <li class="@if($loop->last) active @endif">
+                        @if($item)
+                            <a href="{{$item}}">{{$key}}</a>
+                        @else
+                            {{$key}}
+                        @endif
+                    </li>
+                @endforeach
             </ol>
+            @endif
         </div>
         <div id="page-inner">
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="card-title">
-                                <div class="title">Form Elements</div>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-
-                        </div>
-                    </div>
+                    @yield('content')
                 </div>
             </div>
             <footer><p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez.com</a></p></footer>

@@ -16,6 +16,7 @@ class CreateExplanationTypesTable extends Migration
         Schema::create('explanation_types', function (Blueprint $table) {
             $table->id();
             $table->string("name");
+            $table->softDeletes();
             $table->timestamps();
         });
     }

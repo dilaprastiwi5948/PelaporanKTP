@@ -16,6 +16,7 @@ class CreateSubmissionTypesTable extends Migration
         Schema::create('submission_types', function (Blueprint $table) {
             $table->id();
             $table->string("name");
+            $table->softDeletes();
             $table->timestamps();
         });
     }

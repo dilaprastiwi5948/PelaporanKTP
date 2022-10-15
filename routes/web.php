@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
+use App\Http\Controllers\Admin\ExplanationTypeController;
+use App\Http\Controllers\Admin\ReportingTypeController;
+use App\Http\Controllers\Admin\SubmissionTypeController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,8 +25,9 @@ Route::get("/", function() {
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginSubmit'])->name('login.submit');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
-Route::get('/register', [AuthController::class, 'registerSubmit'])->name('register.submit');
+Route::post('/register', [AuthController::class, 'registerSubmit'])->name('register.submit');
 
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->prefix('operator')->name('operator.')->group(function() {
@@ -32,7 +37,8 @@ Route::middleware(['auth'])->prefix('operator')->name('operator.')->group(functi
 });
 
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function() {
-    Route::get("/", function() {
-        dd('Admin');
-    })->name('dashboard');
+    Route::get('/', [AdminDashboard::class, 'index'])->name('dashboard');
+    Route::resource('/reportingtypes', ReportingTypeController::class)->except('show');
+    Route::resource('/submissiontypes', SubmissionTypeController::class)->except('show');
+    Route::resource('/explanationtypes', ExplanationTypeController::class)->except('show');
 });
