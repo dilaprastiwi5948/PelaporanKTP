@@ -27,9 +27,9 @@
                             @foreach ($fields as $field)
                                 <td>{{$item[$field]}}</td>
                             @endforeach
-                            <td>
+                            <td style="display: flex">
                                 <a href="{{route($baseroute.'edit', $item->id)}}" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
-                                <form class="btn" action="{{ route($baseroute.'destroy', $item->id ) }}" method="post">
+                                <form action="{{ route($baseroute.'destroy', $item->id ) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm @if(!$item->deleted_at) btn-danger @else btn-secondary @endif" onclick="return confirm(@if(!$item->deleted_at) 'Data akan dihapus untuk sementara?' @else 'Data akan dikembalikan?' @endif)">

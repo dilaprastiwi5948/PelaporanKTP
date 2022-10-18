@@ -4,7 +4,10 @@
             <li>
                 <a class="@if(request()->routeis('admin.dashboard')) active-menu @endif" href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard"></i> Dashboard</a>
             </li>
-            <li class="active">
+            <li>
+                <a class="@if(request()->routeis('admin.reporting.*')) active-menu @endif" href="{{route('admin.reporting.index')}}"><i class="fa fa-dashboard"></i> Pelaporan KTP</a>
+            </li>
+            <li class="">
                 <a href="#"><i class="fa fa-sitemap"></i> Master Data<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>

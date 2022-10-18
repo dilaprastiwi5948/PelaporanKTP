@@ -3,6 +3,7 @@
 @push('style')
 <!-- TABLE STYLES-->
 <link href="{{ asset('assets/js/dataTables/dataTables.bootstrap.css') }}" rel="stylesheet" />
+<link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" />
 @endpush
 
 @push('script')
@@ -21,8 +22,12 @@
 
 <script src="{{ asset('assets/js/dataTables/jquery.dataTables.js') }}"></script>
 <script src="{{ asset('assets/js/dataTables/dataTables.bootstrap.js') }}"></script>
+<script src="{{ asset('assets/js/select2.full.min.js') }}"></script>
 <!-- Custom Js -->
 <script src="{{ asset('assets/js/custom-scripts.js') }}"></script>
+
+@stack('admin-script')
+
 @endpush
 
 @section('body')

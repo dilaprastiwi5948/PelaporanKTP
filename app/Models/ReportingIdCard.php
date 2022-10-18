@@ -9,7 +9,23 @@ class ReportingIdCard extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'reportingtype_id',
+        'submissiontype_id',
+        'explanationtype_id',
+        'name',
+        'nik',
+        'birthplace',
+        'birthdate',
+        'address',
+        'sub_districts',
+        'districts',
+        'city',
+        'province',
+        'created_by',
+        'created_at',
+        'updated_at'
+    ];
 
     public function ExplanationType()
     {

@@ -15,25 +15,40 @@
             <table class="table dataTables">
                 <thead>
                     <tr>
-                        @foreach ($fields as $item)
-                        <th>{{$item}}</th>
-                        @endforeach
+                        <th>NIK</th>
+                        <th>Nama</th>
+                        <th>Tempat, Tanggal lahir</th>
+                        <th>Alamat</th>
+                        <th>Kelurahan</th>
+                        <th>Kecamatan</th>
+                        <th>Kota</th>
+                        <th>Pengajuan</th>
+                        <th>Keterangan</th>
+                        <th>Tgl Dibuat</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($datas as $item)
                         <tr>
-                            @foreach ($fields as $field)
-                                <td>{{$item[$field]}}</td>
-                            @endforeach
+                            <th>{{$item->nik}}</th>
+                            <th>{{$item->name}}</th>
+                            <th>{{$item->birthplace . ', ' . $item->birthdate}}</th>
+                            <th>{{$item->address}}</th>
+                            <th>{{$item->sub_districts}}</th>
+                            <th>{{$item->districts}}</th>
+                            <th>{{$item->city}}</th>
+                            <th>{{$item->explanationtype->name}}</th>
+                            <th>{{$item->submissiontype->name}}</th>
+                            <th>{{$item->created_at}}</th>
                             <td style="display: flex">
+                                <a href="{{route($baseroute.'show', $item->id)}}" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-eye-open"></span></a>
                                 <a href="{{route($baseroute.'edit', $item->id)}}" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
                                 <form action="{{ route($baseroute.'destroy', $item->id ) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm @if(!$item->deleted_at) btn-danger @else btn-secondary @endif" onclick="return confirm(@if(!$item->deleted_at) 'Data akan dihapus untuk sementara?' @else 'Data akan dikembalikan?' @endif)">
-                                        <span class="@if(!$item->deleted_at) glyphicon glyphicon-trash @else glyphicon glyphicon-repeat @endif"></span>
+                                    <button type="submit" class="btn btn-sm btn-danger " onclick="return confirm('Data akan dihapus untuk sementara?')">
+                                        <span class="glyphicon glyphicon-trash"></span>
                                     </button>
                                 </form>
                             </td>

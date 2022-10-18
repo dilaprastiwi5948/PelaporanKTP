@@ -19,12 +19,14 @@ class CreateReportingIdCardsTable extends Migration
             $table->foreignId("submissiontype_id")->constrained('submission_types');
             $table->foreignId("explanationtype_id")->constrained('explanation_types');
             $table->string("nik")->unique();
+            $table->string("name");
             $table->date('birthdate');
             $table->string('birthplace');
             $table->text('address');
             $table->text('sub_districts');
             $table->text('districts');
             $table->text('city');
+            $table->text('province');
             $table->foreignId('created_by')->constrained('users');
             $table->timestamps();
         });
