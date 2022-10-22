@@ -15,40 +15,29 @@
             <table class="table dataTables">
                 <thead>
                     <tr>
+                        <th>Username</th>
+                        <th>Name</th>
                         <th>NIK</th>
-                        <th>Nama</th>
-                        <th>Tempat, Tanggal lahir</th>
-                        <th>Alamat</th>
-                        <th>Kelurahan</th>
-                        <th>Kecamatan</th>
-                        <th>Kota</th>
-                        <th>Pengajuan</th>
-                        <th>Keterangan</th>
-                        <th>Tgl Dibuat</th>
+                        <th>Jabatan</th>
+                        <th>User role</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($datas as $item)
                         <tr>
-                            <th>{{$item->nik}}</th>
-                            <th>{{$item->name}}</th>
-                            <th>{{$item->birthplace . ', ' . $item->birthdate}}</th>
-                            <th>{{$item->address}}</th>
-                            <th>{{$item->sub_districts}}</th>
-                            <th>{{$item->districts}}</th>
-                            <th>{{$item->city}}</th>
-                            <th><div class="label label-primary">{{$item->explanationtype->name}}</div></th>
-                            <th><div class="label label-warning">{{$item->submissiontype->name}}</div></th>
-                            <th>{{$item->created_at}}</th>
+                            <td>{{$item->username}}</td>
+                            <td>{{$item->userdetail->name}}</td>
+                            <td>{{$item->userdetail->nik}}</td>
+                            <td>{{$item->userdetail->position}}</td>
+                            <td><div class="label label-{{$item->is_admin ? "warning" : "primary"}}">{{$item->is_admin ? "Operator" : "Admin"}}</div></td>
                             <td style="display: flex">
-                                <a href="{{route($baseroute.'show', $item->id)}}" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-eye-open"></span></a>
                                 <a href="{{route($baseroute.'edit', $item->id)}}" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
                                 <form action="{{ route($baseroute.'destroy', $item->id ) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger " onclick="return confirm('Data akan dihapus untuk sementara?')">
-                                        <span class="glyphicon glyphicon-trash"></span>
+                                    <button type="submit" class="btn btn-sm @if(!$item->deleted_at) btn-danger @else btn-secondary @endif" onclick="return confirm(@if(!$item->deleted_at) 'Data akan dihapus untuk sementara?' @else 'Data akan dikembalikan?' @endif)">
+                                        <span class="@if(!$item->deleted_at) glyphicon glyphicon-trash @else glyphicon glyphicon-repeat @endif"></span>
                                     </button>
                                 </form>
                             </td>

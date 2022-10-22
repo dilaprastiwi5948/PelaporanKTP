@@ -7,6 +7,9 @@
             <li>
                 <a class="@if(request()->routeis('admin.reporting.*')) active-menu @endif" href="{{route('admin.reporting.index')}}"><i class="fa fa-dashboard"></i> Pelaporan KTP</a>
             </li>
+            <li>
+                <a class="@if(request()->routeis('admin.operator.*')) active-menu @endif" href="{{route('admin.operator.index')}}"><i class="fa fa-dashboard"></i> Manajemen Operator</a>
+            </li>
             <li class="">
                 <a href="#"><i class="fa fa-sitemap"></i> Master Data<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">

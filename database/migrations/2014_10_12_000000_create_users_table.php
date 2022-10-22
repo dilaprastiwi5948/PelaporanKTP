@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->boolean('is_admin')->default('0')->comment('1: admin, 0: pelapor');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\ExplanationTypeController;
+use App\Http\Controllers\Admin\OperatorController;
 use App\Http\Controllers\Admin\ReportingController;
 use App\Http\Controllers\Admin\ReportingTypeController;
 use App\Http\Controllers\Admin\SubmissionTypeController;
@@ -39,8 +40,10 @@ Route::middleware(['auth'])->prefix('operator')->name('operator.')->group(functi
 
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function() {
     Route::get('/', [AdminDashboard::class, 'index'])->name('dashboard');
+    Route::get('/profile', [AdminDashboard::class, 'profile'])->name('profile');
     Route::resource('/reportingtypes', ReportingTypeController::class)->except('show');
     Route::resource('/submissiontypes', SubmissionTypeController::class)->except('show');
     Route::resource('/explanationtypes', ExplanationTypeController::class)->except('show');
     Route::resource('/reporting', ReportingController::class);
+    Route::resource('/operator', OperatorController::class)->except('show');
 });

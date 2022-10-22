@@ -2,8 +2,7 @@ $(document).ready(() => {
     $('#reportingtype_id').val(null).trigger('change');
     $('#submissiontype_id').val(null).trigger('change');
     $('#explanationtype_id').val(null).trigger('change');
-    setupProvince()
-
+    setupProvince();
 })
 
 function setupProvince() {
@@ -20,7 +19,12 @@ function setupProvince() {
                     return {'id': data.id, 'text' : data.nama}
                 })
             });
-            $('#select2-provinsi').val(null).trigger('change');
+            const inputValue = $("#value-province").val();
+            const search = res.provinsi.find((value) => value.nama == inputValue)
+
+            $('#select2-provinsi').val(search ? search.id : null).trigger('change');
+            if(search) setupCity(search.id)
+
             $('#select2-provinsi').change(() => {
                 const selected = $('#select2-provinsi').find(':selected')
                 $("#value-province").val(selected.text())
@@ -52,7 +56,12 @@ function setupCity(id) {
                     return {'id': data.id, 'text' : data.nama}
                 })
             });
-            $(select).val(null).trigger('change');
+            const inputValue = $("#value-city").val();
+            const search = res.kota_kabupaten.find((value) => value.nama == inputValue)
+
+            $(select).val(search ? search.id : null).trigger('change');
+            if(search) setupDistricts(search.id)
+
             $(select).change(() => {
                 const selected = $(select).find(':selected')
                 $("#value-city").val(selected.text())
@@ -81,7 +90,13 @@ function setupDistricts(id) {
                     return {'id': data.id, 'text' : data.nama}
                 })
             });
-            $(select).val(null).trigger('change');
+
+            const inputValue = $("#value-districts").val();
+            const search = res.kecamatan.find((value) => value.nama == inputValue)
+
+            $(select).val(search ? search.id : null).trigger('change');
+            if(search) setupSubDistricts(search.id)
+
             $(select).change(() => {
                 const selected = $(select).find(':selected')
                 $("#value-districts").val(selected.text())
@@ -109,7 +124,11 @@ function setupSubDistricts(id) {
                     return {'id': data.id, 'text' : data.nama}
                 })
             });
-            $(select).val(null).trigger('change');
+            const inputValue = $("#value-sub_districts").val();
+            const search = res.kelurahan.find((value) => value.nama == inputValue)
+
+            $(select).val(search ? search.id : null).trigger('change');
+
             $(select).change(() => {
                 const selected = $(select).find(':selected')
                 $("#value-sub_districts").val(selected.text())

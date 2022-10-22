@@ -33,7 +33,7 @@ class ReportingController extends Controller
             'title' => $this->viewName,
             'baseroute' => $this->baseRoute,
             'breadcrumb' => ['home' => route('admin.dashboard'), 'reporting' => null],
-            'datas' => $this->model->with(['explanationtype', 'reportingtype', 'submissiontype', 'user'])->get()
+            'datas' => $this->model->with(['explanationtype', 'reportingtype', 'submissiontype', 'user'])->orderBy('created_at', 'desc')->get()
         ]);
     }
 

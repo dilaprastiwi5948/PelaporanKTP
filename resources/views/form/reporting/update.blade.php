@@ -86,7 +86,7 @@
                     <div class="form-group @error('province') has-error @enderror"">
                         <label for="province">Provinsi</label>
                         <select class="form-control" disabled id="select2-provinsi"></select>
-                        <input type="text" name="province" id="value-province" hidden>
+                        <input type="text" name="province" id="value-province" value="{{old('province') ?? $data->province}}" hidden>
                         @error('province')
                             <small id="provinceid" class="text-danger">{{$message}}</small>
                         @enderror
@@ -94,7 +94,7 @@
                     <div class="form-group @error('city') has-error @enderror">
                         <label for="city">Kota / Kabupaten</label>
                         <select class="form-control" disabled id="select2-city"></select>
-                        <input type="text" name="city" id="value-city" hidden>
+                        <input type="text" name="city" id="value-city" value="{{old('city') ?? $data->city}}" hidden>
                         @error('city')
                             <small id="cityid" class="text-danger">{{$message}}</small>
                         @enderror
@@ -102,7 +102,7 @@
                     <div class="form-group @error('districts') has-error @enderror">
                         <label for="districts">Kecamatan</label>
                         <select class="form-control" disabled id="select2-districts"></select>
-                        <input type="text" name="districts" id="value-districts" hidden>
+                        <input type="text" name="districts" id="value-districts" value="{{ old('districts') ?? $data->districts}}" hidden>
                         @error('districts')
                             <small id="districtsid" class="text-danger">{{$message}}</small>
                         @enderror
@@ -110,7 +110,7 @@
                     <div class="form-group @error('sub_districts') has-error @enderror">
                         <label for="sub_districts">Kelurahan</label>
                         <select class="form-control" disabled id="select2-sub_districts"></select>
-                        <input type="text" name="sub_districts" id="value-sub_districts" hidden>
+                        <input type="text" name="sub_districts" id="value-sub_districts" hidden value="{{old('sub_districts') ?? $data->sub_districts}}">
                         @error('sub_districts')
                             <small id="sub_districtsid" class="text-danger">{{$message}}</small>
                         @enderror
