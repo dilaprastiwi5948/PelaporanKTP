@@ -55,8 +55,8 @@
                     <div class="form-group @error('is_admin') has-error @enderror"">
                         <label for="is_admin">User roles {{$title}}</label>
                         <select name="is_admin" class="form-control" id="is_admin">
-                            <option {{old('is_admin') == 1 ? "required" : ""}} value="1">Operator</option>
-                            <option {{old('is_admin') == 0 ? "required" : ""}} value="0">Admin</option>
+                            <option {{old('is_admin') == 1 ? "required" : ""}} value="1">Admin</option>
+                            <option {{old('is_admin') == 0 ? "required" : ""}} value="0">Operator</option>
                         </select>
                         @error('is_admin')
                             <small id="is_adminid" class="text-danger">{{$message}}</small>

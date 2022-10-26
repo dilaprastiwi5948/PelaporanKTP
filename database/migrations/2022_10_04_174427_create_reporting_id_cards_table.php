@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateReportingIdCardsTable extends Migration
@@ -18,7 +19,7 @@ class CreateReportingIdCardsTable extends Migration
             $table->foreignId("reportingtype_id")->constrained('reporting_types');
             $table->foreignId("submissiontype_id")->constrained('submission_types');
             $table->foreignId("explanationtype_id")->constrained('explanation_types');
-            $table->string("nik")->unique();
+            $table->string("nik");
             $table->string("name");
             $table->date('birthdate');
             $table->string('birthplace');

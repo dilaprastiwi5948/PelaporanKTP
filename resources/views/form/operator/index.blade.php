@@ -30,7 +30,7 @@
                             <td>{{$item->userdetail->name}}</td>
                             <td>{{$item->userdetail->nik}}</td>
                             <td>{{$item->userdetail->position}}</td>
-                            <td><div class="label label-{{$item->is_admin ? "warning" : "primary"}}">{{$item->is_admin ? "Operator" : "Admin"}}</div></td>
+                            <td><div class="label label-{{!$item->is_admin ? "warning" : "primary"}}">{{!$item->is_admin ? "Operator" : "Admin"}}</div></td>
                             <td style="display: flex">
                                 <a href="{{route($baseroute.'edit', $item->id)}}" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
                                 <form action="{{ route($baseroute.'destroy', $item->id ) }}" method="post">

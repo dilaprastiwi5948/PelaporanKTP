@@ -9,7 +9,8 @@
     </div> --}}
     <div class="panel-body">
         <div style="margin-bottom: 1rem;">
-            <a href="{{route($baseroute.'create')}}" class="btn btn-primary">Buat {{strtolower($title)}} baru</a>
+            <a href="{{route($baseroute.'create')}}" class="btn btn-success">Buat {{strtolower($title)}} baru</a>
+            <a href="{{route('admin.report.dailyreport')}}" class="btn btn-primary">Laporan harian {{strtolower($title)}}</a>
         </div>
         <div class="table-responsive">
             <table class="table dataTables">

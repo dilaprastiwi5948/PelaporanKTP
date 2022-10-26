@@ -5,7 +5,10 @@
                 <a class="@if(request()->routeis('admin.dashboard')) active-menu @endif" href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard"></i> Dashboard</a>
             </li>
             <li>
-                <a class="@if(request()->routeis('admin.reporting.*')) active-menu @endif" href="{{route('admin.reporting.index')}}"><i class="fa fa-dashboard"></i> Pelaporan KTP</a>
+                <a class="@if(request()->routeis('admin.reporting.*')) active-menu @endif" href="{{route('admin.reporting.index')}}"><i class="fa fa-credit-card"></i> Pelaporan KTP</a>
+            </li>
+            <li>
+                <a class="@if(request()->routeis('admin.report.*')) active-menu @endif" href="{{route('admin.report.dailyreport')}}"><i class="fa fa-files-o"></i> Laporan harian</a>
             </li>
             <li>
                 <a class="@if(request()->routeis('admin.operator.*')) active-menu @endif" href="{{route('admin.operator.index')}}"><i class="fa fa-dashboard"></i> Manajemen Operator</a>

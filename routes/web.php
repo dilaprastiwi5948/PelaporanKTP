@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ReportingController;
 use App\Http\Controllers\Admin\ReportingTypeController;
 use App\Http\Controllers\Admin\SubmissionTypeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DailyReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,4 +47,6 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function() {
     Route::resource('/explanationtypes', ExplanationTypeController::class)->except('show');
     Route::resource('/reporting', ReportingController::class);
     Route::resource('/operator', OperatorController::class)->except('show');
+
+    Route::get('report/dailyreport', [DailyReportController::class, 'index'])->name('report.dailyreport');
 });
