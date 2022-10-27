@@ -20,7 +20,7 @@
             </a>
             <ul class="dropdown-menu dropdown-user">
                 <li>
-                    <a href="{{route('admin.profile')}}"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    <a href="{{route(auth()->user()->is_admin ? 'admin.profile' : 'operator.profile')}}"><i class="fa fa-user fa-fw"></i> User Profile</a>
                 </li>
                 <li class="divider"></li>
                 <li>

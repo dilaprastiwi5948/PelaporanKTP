@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\ReportingTypeController;
 use App\Http\Controllers\Admin\SubmissionTypeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DailyReportController;
+use App\Http\Controllers\Operator\DashboardController;
+use App\Http\Controllers\Operator\ReportingController as OperatorReportingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,9 +36,9 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->prefix('operator')->name('operator.')->group(function() {
-    Route::get("/", function() {
-        dd('operator');
-    })->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
+    Route::resource('/reporting', OperatorReportingController::class);
 });
 
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function() {
