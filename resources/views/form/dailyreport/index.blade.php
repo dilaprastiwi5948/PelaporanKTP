@@ -99,6 +99,45 @@
                         </tbody>
                     </table>
                 </div>
+                <div>
+                    <label for="">Pemohon hari ini</label>
+                    <table class="table dataTables">
+                        <thead>
+                            <tr>
+                                <th>NIK</th>
+                                <th>Nama</th>
+                                <th>Tempat, Tanggal lahir</th>
+                                <th>Alamat</th>
+                                <th>Kelurahan</th>
+                                <th>Kecamatan</th>
+                                <th>Kota</th>
+                                <th>Nama Operator</th>
+                                <th>Pengajuan</th>
+                                <th>Keterangan</th>
+                                <th>Jenis Pelaporan</th>
+                                <th>Tgl Dibuat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($data->all as $item)
+                                <tr>
+                                    <td>{{$item->nik}}</td>
+                                    <td>{{$item->name}}</td>
+                                    <td>{{$item->birthplace . ', ' . $item->birthdate}}</td>
+                                    <td>{{$item->address}}</td>
+                                    <td>{{$item->sub_districts}}</td>
+                                    <td>{{$item->districts}}</td>
+                                    <td>{{$item->city}}</td>
+                                    <td>{{$item->user->username}}</td>
+                                    <td><div class="label label-primary">{{$item->explanationtype->name}}</div></td>
+                                    <td><div class="label label-success">{{$item->submissiontype->name}}</div></td>
+                                    <td><div class="label label-warning">{{$item->reportingtype->name}}</div></td>
+                                    <td>{{$item->created_at}}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="panel-footer nonprintable" >
                 <button onclick="print()" class="btn btn-primary"><i class="fa fa-print"></i> Print</button>

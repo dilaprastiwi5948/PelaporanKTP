@@ -9,6 +9,9 @@
                     <a class="@if(request()->routeis('admin.reporting.*')) active-menu @endif" href="{{route('admin.reporting.index')}}"><i class="fa fa-credit-card"></i> Pelaporan KTP</a>
                 </li>
                 <li>
+                    <a class="@if(request()->routeis('operator.search.*')) active-menu @endif" href="{{route('operator.search.index')}}"><i class="fa fa-credit-card"></i> Pencarian Data</a>
+                </li>
+                <li>
                     <a class="@if(request()->routeis('admin.report.*')) active-menu @endif" href="{{route('admin.report.dailyreport')}}"><i class="fa fa-files-o"></i> Laporan harian</a>
                 </li>
                 <li>
@@ -36,6 +39,9 @@
                 </li>
                 <li>
                     <a class="@if(request()->routeis('operator.reporting.*')) active-menu @endif" href="{{route('operator.reporting.index')}}"><i class="fa fa-credit-card"></i> Pelaporan KTP</a>
+                </li>
+                <li>
+                    <a class="@if(request()->routeis('operator.search.*')) active-menu @endif" href="{{route('operator.search.index')}}"><i class="fa fa-credit-card"></i> Pencarian Data</a>
                 </li>
             </ul>
         @endif

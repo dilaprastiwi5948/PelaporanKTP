@@ -19,7 +19,7 @@ class DashboardController extends Controller
         $data->total_all = ReportingIdCard::get()->count();
         $data->total_in_area = ReportingIdCard::where(['reportingtype_id' => 1])->get()->count();
         $data->total_out_area = ReportingIdCard::where(['reportingtype_id' => 2])->get()->count();
-        $data->operator = ReportingIdCard::with('user')->select(['reporting_id_cards.*', DB::raw('count(reporting_id_cards.id) total'), 'created_by'])->groupBy(['reporting_id_cards.created_by', 'reporting_id_cards.id'])->get();
+        $data->operator = ReportingIdCard::with('user')->select(['reporting_id_cards.*', DB::raw('count(reporting_id_cards.id) total'), 'created_by'])->groupBy(['reporting_id_cards.created_by'])->get();
         $data->category = [
             ExplanationType::select(['explanation_types.name', DB::raw('(select count(id) total from reporting_id_cards where explanationtype_id = explanation_types.id group by explanationtype_id) total')])->get(),
             SubmissionType::select(['submission_types.name', DB::raw('(select count(id) total from reporting_id_cards where submissiontype_id = submission_types.id group by submissiontype_id) total')])->get()

@@ -23,8 +23,10 @@
                         <th>Kelurahan</th>
                         <th>Kecamatan</th>
                         <th>Kota</th>
+                        <th>Nama Operator</th>
                         <th>Pengajuan</th>
                         <th>Keterangan</th>
+                        <th>Jenis Pelaporan</th>
                         <th>Tgl Dibuat</th>
                         <th>Action</th>
                     </tr>
@@ -39,8 +41,10 @@
                             <th>{{$item->sub_districts}}</th>
                             <th>{{$item->districts}}</th>
                             <th>{{$item->city}}</th>
-                            <th><div class="label label-primary">{{$item->explanationtype->name}}</div></th>
-                            <th><div class="label label-warning">{{$item->submissiontype->name}}</div></th>
+                            <td>{{$item->user->username}}</td>
+                            <td><div class="label label-primary">{{$item->explanationtype->name}}</div></td>
+                            <td><div class="label label-success">{{$item->submissiontype->name}}</div></td>
+                            <td><div class="label label-warning">{{$item->reportingtype->name}}</div></td>
                             <th>{{$item->created_at}}</th>
                             <td style="display: flex">
                                 <a href="{{route($baseroute.'show', $item->id)}}" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-eye-open"></span></a>
