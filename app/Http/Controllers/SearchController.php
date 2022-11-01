@@ -19,7 +19,6 @@ class SearchController extends Controller
             ->when($request->get("submissiontype_id"), fn($query, $search) => $query->where('submissiontype_id', $search))
             ->when($request->get("reportingtype_id"), fn($query, $search) => $query->where('reportingtype_id', $search))
             ->when($request->get("operator"), fn($query, $search) => $query->where('created_by', $search))
-            ->when(!auth()->user()->is_admin, fn($query, $search) => $query->where('created_by', auth()->user()->id))
             ->with(['explanationtype', 'reportingtype', 'submissiontype', 'user'])->orderBy('created_at', 'desc')
             ->get();
 
