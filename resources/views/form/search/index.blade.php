@@ -59,6 +59,9 @@
                 <a href="{{route($baseroute.'.index')}}" class="btn btn-primary btn-block"><i class="fa fa-reload"></i> Reset</a>
             </div>
         </form>
+        
+        <div class="panel panel-default" id="printable">
+        <div class="table-responsive">
         <table class="table dataTables">
             <thead>
                 <tr>
@@ -95,6 +98,8 @@
                 @endforeach
             </tbody>
         </table>
+        </div>
+        </div>
     </div>
 </div>
 

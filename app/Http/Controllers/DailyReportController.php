@@ -16,7 +16,7 @@ class DailyReportController extends Controller
 {
     protected $baseRoute = 'admin.report.';
     protected $viewFolder = 'form.dailyreport.';
-    protected $viewName = "Pelaporan KTP";
+    protected $viewName = "Laporan Harian";
 
 
     public function index(Request $request)

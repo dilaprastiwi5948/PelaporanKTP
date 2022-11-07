@@ -61,7 +61,7 @@ class OperatorController extends Controller
             'name' => 'required|string',
             'nik' => 'required|min:16|numeric',
             'position' => 'required|string',
-            'username' => 'required|min:5',
+            'username' => 'required',
             'password' => 'required|min:7',
             'is_admin' => 'required'
         ]);
@@ -123,7 +123,7 @@ class OperatorController extends Controller
             'name' => 'required|string',
             'nik' => 'required|min:16|numeric',
             'position' => 'required|string',
-            'username' => 'required|min:5',
+            'username' => 'required',
             'is_admin' => 'required'
         ]);
         $oldUser = User::withTrashed()->whereId($id)->first();
