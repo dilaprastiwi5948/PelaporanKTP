@@ -14,19 +14,32 @@
 @section('content')
 <div class="panel panel-default">
     <div class="panel-body">
-        <form method="GET" action="{{route($baseroute.'dailyreport')}}" class="panel panel-primary">
+        <form method="GET" action="{{route($baseroute.'dailyreport')}}" class="panel panel-primary form-inline">
             <div class="panel-heading">
                 Cari laporan berdasarkan tanggal
             </div>
-            <div class="panel-body">
+            <div>
+            <form class="form-inline">
+                <strong><p>Tanggal filter laporan</p></strong>
+                <div class="form-group mx-sm-3 mb-2">
+                    
+                    <div class="form-group @error('date') has-error @enderror">
+                        <input type="date" class="form-control" required name="date">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success mb-2 "><i class="fa fa-search"></i> Cari</button>
+            </form>
+            </div>
+            {{-- <div class="panel-body">
                 <div class="form-group @error('date') has-error @enderror">
                     <label for="date">Tanggal filter laporan</label>
                     <input type="date" class="form-control" required name="date">
                 </div>
 
                 <button type="submit" class="btn btn-success btn-block"><i class="fa fa-search"></i> Cari</button>
-            </div>
+            </div> --}}
         </form>
+        
         @if ($data)
         <div class="panel panel-default" id="printable">
             <div class="panel-heading" id="title-page">

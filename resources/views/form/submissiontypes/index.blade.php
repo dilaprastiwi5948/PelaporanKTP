@@ -15,9 +15,9 @@
             <table class="table dataTables">
                 <thead>
                     <tr>
-                        @foreach ($fields as $item)
-                        <th>{{$item}}</th>
-                        @endforeach
+                        <th>Nama</th>
+                        <th>Dibuat</th>
+                        <th>Terakhir Diubah</th>
                         <th>Action</th>
                     </tr>
                 </thead>

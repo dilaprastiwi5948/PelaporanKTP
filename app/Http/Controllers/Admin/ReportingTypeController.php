@@ -29,7 +29,7 @@ class ReportingTypeController extends Controller
         return view($this->viewFolder . "index", [
             'title' => $this->viewName,
             'baseroute' => $this->baseRoute,
-            'breadcrumb' => ['home' => route('admin.dashboard'), 'reportingtypes' => null],
+            'breadcrumb' => ['HOME' => route('admin.dashboard'), 'JENIS PELAPORAN' => null],
             'fields' => $this->model->getFillable(),
             'datas' => $this->model->withTrashed()->get()
         ]);
@@ -45,7 +45,7 @@ class ReportingTypeController extends Controller
         return view($this->viewFolder . "create", [
             'title' => $this->viewName,
             'baseroute' => $this->baseRoute,
-            'breadcrumb' => ['home' => route('admin.dashboard'), 'reportingtypes' => route('admin.reportingtypes.index'), 'create' => null],
+            'breadcrumb' => ['HOME' => route('admin.dashboard'), 'JENIS PELAPORAN' => route('admin.reportingtypes.index'), 'BARU' => null],
         ]);
     }
 
@@ -92,7 +92,7 @@ class ReportingTypeController extends Controller
         return view($this->viewFolder . "update", [
             'title' => $this->viewName,
             'baseroute' => $this->baseRoute,
-            'breadcrumb' => ['home' => route('admin.dashboard'), 'reportingtypes' => route($this->baseRoute.'index'), 'edit' => null],
+            'breadcrumb' => ['HOME' => route('admin.dashboard'), 'JENIS PELAPORAN' => route($this->baseRoute.'index'), 'EDIT' => null],
             'data' => $this->model->withTrashed()->whereId($id)->first()
         ]);
     }

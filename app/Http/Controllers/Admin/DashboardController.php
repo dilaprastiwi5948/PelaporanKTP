@@ -29,7 +29,7 @@ class DashboardController extends Controller
             'title' => null,
             'subtitle' => null,
             'baseroute' => 'admin.dashboard',
-            'breadcrumb' => ['home' => route('admin.dashboard'), 'dashboard' => null],
+            'breadcrumb' => ['HOME' => route('admin.dashboard'), 'DASHBOARD' => null],
             'data' => $data
         ]);
     }

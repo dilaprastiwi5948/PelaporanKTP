@@ -32,7 +32,7 @@ class ReportingController extends Controller
         return view($this->viewFolder . "index", [
             'title' => $this->viewName,
             'baseroute' => $this->baseRoute,
-            'breadcrumb' => ['home' => route('admin.dashboard'), 'reporting' => null],
+            'breadcrumb' => ['HOME' => route('admin.dashboard'), 'PELAPORAN KTP' => null],
             'datas' => $this->model->with(['explanationtype', 'reportingtype', 'submissiontype', 'user'])->orderBy('created_at', 'desc')->get()
         ]);
     }
@@ -47,7 +47,7 @@ class ReportingController extends Controller
         return view($this->viewFolder . "create", [
             'title' => $this->viewName,
             'baseroute' => $this->baseRoute,
-            'breadcrumb' => ['home' => route('admin.dashboard'), 'reporting' => route($this->baseRoute.'index'), 'create' => null],
+            'breadcrumb' => ['HOME' => route('admin.dashboard'), 'PELAPORAN KTP' => route($this->baseRoute.'index'), 'REGISTRASI PELAPOR' => null],
             'reportingtype' => ReportingType::get(),
             'submissiontype' => SubmissionType::get(),
             'explanationtype' => ExplanationType::get(),
@@ -102,7 +102,7 @@ class ReportingController extends Controller
         return view($this->viewFolder . "show", [
             'title' => $this->viewName,
             'baseroute' => $this->baseRoute,
-            'breadcrumb' => ['home' => route('admin.dashboard'), 'reporting' => route($this->baseRoute.'index'), 'detail' => null],
+            'breadcrumb' => ['HOME' => route('admin.dashboard'), 'PELAPORAN KTP' => route($this->baseRoute.'index'), 'DETAIL' => null],
             'data' => $data
         ]);
     }
@@ -118,7 +118,7 @@ class ReportingController extends Controller
         return view($this->viewFolder . "update", [
             'title' => $this->viewName,
             'baseroute' => $this->baseRoute,
-            'breadcrumb' => ['home' => route('admin.dashboard'), 'reporting' => route($this->baseRoute.'index'), 'edit' => null],
+            'breadcrumb' => ['HOME' => route('admin.dashboard'), 'PELAPORAN KTP' => route($this->baseRoute.'index'), 'EDIT' => null],
             'reportingtype' => ReportingType::get(),
             'submissiontype' => SubmissionType::get(),
             'explanationtype' => ExplanationType::get(),
