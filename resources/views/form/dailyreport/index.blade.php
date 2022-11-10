@@ -139,7 +139,7 @@
                         <label for="">Pemohon pada tanggal {{date('d F Y', strtotime(request()->get('date')))}}</label>
                     </div>
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table dataTables">
                             <thead>
                                 <tr>
                                     <th>NIK</th>
@@ -179,7 +179,7 @@
                 </div>
             </div>
             <div class="panel-footer nonprintable" >
-                <a href="{{route('admin.report.dailyreport.print', ['date' => request()->get('date') ])}}" class="btn btn-primary"><i class="fa fa-print"></i> Print</a>
+                <a href="{{route('admin.report.dailyreport.print', ['date' => request()->get('date') ])}}" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print</a>
             </div>
         </div>
         @else

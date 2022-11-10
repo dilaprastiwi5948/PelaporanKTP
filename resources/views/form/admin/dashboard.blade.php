@@ -13,6 +13,7 @@
                 <div class="thumbnail">
                     <div class="caption">
                         <h4>Jumlah pemohon</h4>
+                        <i class="fa fa-users fa-2x text-gray-300"></i>
                         <h4><span class="label label-primary">{{$data->total_all}} Pemohon</span></h4>
                     </div>
                 </div>
@@ -21,6 +22,7 @@
                 <div class="thumbnail">
                     <div class="caption">
                         <h4>Jumlah pemohon dalam daerah</h4>
+                        <i class="fa fa-users fa-2x text-gray-300"></i>
                         <h4><span class="label label-primary">{{$data->total_in_area}} pemohon</span></h4>
                     </div>
                 </div>
@@ -29,6 +31,7 @@
                 <div class="thumbnail">
                     <div class="caption">
                         <h4>Jumlah pemohon luar daerah</h4>
+                        <i class="fa fa-users fa-2x text-gray-300"></i>
                         <h4><span class="label label-primary">{{$data->total_out_area}} pemohon</span></h4>
                     </div>
                 </div>
@@ -46,10 +49,10 @@
                 </thead>
                 <tbody>
                     @foreach ($data->operator as $item)
-                        <tr>
-                            <td>{{$item->user->username}}</td>
-                            <td>{{$item->total}} Pemohon</td>
-                        </tr>
+                    <tr>
+                        <td>{{$item->user->username}}</td>
+                        <td>{{$item->total}} Pemohon</td>
+                    </tr>
                     @endforeach
                 </tbody>
             </table>
@@ -66,16 +69,85 @@
                 </thead>
                 <tbody>
                     @foreach ($data->category as $item)
-                        @foreach ($item as $value)
-                            <tr>
-                                <td>{{$value->name}}</td>
-                                <td>{{$value->total ?? 0}} Pemohon</td>
-                            </tr>
-                        @endforeach
+                    @foreach ($item as $value)
+                    <tr>
+                        <td>{{$value->name}}</td>
+                        <td>{{$value->total ?? 0}} Pemohon</td>
+                    </tr>
+                    @endforeach
                     @endforeach
                 </tbody>
             </table>
         </div>
+        <div class="panel">
+            <div id="charts"></div>
+        </div>
+        @section('chart')
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script>
+        Highcharts.chart('charts', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Laporan Pemohon Berdasarkan Pemohon'
+            },
+            xAxis: {
+                categories: ['Online', 'Dinas', 'Kelurahan', 'MPP'],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Jumlah Cetak',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' Orang'
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 80,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Online',
+                data: [ {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }} ]
+            }, {
+                name: 'Dinas',
+                data: [ {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }}]
+            }, {
+                name: 'Kelurahan',
+                data: [ {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }} ]
+            }, {
+                name: 'MPP',
+                data: [ {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }} ]
+            }]
+        });
+        </script>
+        @endsection
     </div>
 </div>
 @endsection

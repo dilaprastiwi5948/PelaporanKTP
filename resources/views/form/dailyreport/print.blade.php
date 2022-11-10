@@ -117,7 +117,8 @@
                         <label for="">Pemohon pada tanggal {{date('d F Y', strtotime(request()->get('date')))}}</label>
                     </div>
                     <div class="panel-body">
-                        <table class="table table-striped table-bordered table-hover">
+                        <div>
+                        <table class="table dataTables table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>NIK</th>
