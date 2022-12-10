@@ -1,5 +1,16 @@
 @extends('template.admin')
 
+@push('style')
+    <style>
+        .border-total {
+            border: 3px solid rgb(54, 106, 201);
+        }
+        .border {
+            border-color:rgb(54, 106, 201);
+        }
+    </style>
+@endpush
+
 @section('content')
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -10,29 +21,29 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-sm-4">
-                <div class="thumbnail">
+                <div class="thumbnail border-total ">
                     <div class="caption">
-                        <h4>Jumlah pemohon</h4>
+                        <h4><strong>Total jumlah pemohon</strong></h4>
                         <i class="fa fa-users fa-2x text-gray-300"></i>
-                        <h4><span class="label label-primary">{{$data->total_all}} Pemohon</span></h4>
+                        <h4><p class="label label-primary">{{$data->total_all}} Pemohon</p></h4>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="thumbnail">
+                <div class="thumbnail border-total">
                     <div class="caption">
-                        <h4>Jumlah pemohon dalam daerah</h4>
+                        <h4><strong>Total pemohon dalam daerah</strong></h4>
                         <i class="fa fa-users fa-2x text-gray-300"></i>
-                        <h4><span class="label label-primary">{{$data->total_in_area}} pemohon</span></h4>
+                        <h4><p class="label label-success">{{$data->total_in_area}} pemohon</p></h4>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="thumbnail">
+                <div class="thumbnail border-total">
                     <div class="caption">
-                        <h4>Jumlah pemohon luar daerah</h4>
+                        <h4><strong>Total pemohon luar daerah</strong></h4>
                         <i class="fa fa-users fa-2x text-gray-300"></i>
-                        <h4><span class="label label-primary">{{$data->total_out_area}} pemohon</span></h4>
+                        <h4><p class="label label-danger">{{$data->total_out_area}} pemohon</p></h4>
                     </div>
                 </div>
             </div>
@@ -79,7 +90,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="panel">
+        {{-- <div class="panel">
             <div id="charts"></div>
         </div>
         @section('chart')
@@ -87,67 +98,56 @@
         <script>
         Highcharts.chart('charts', {
             chart: {
-                type: 'bar'
+                type: 'column'
             },
             title: {
                 text: 'Laporan Pemohon Berdasarkan Pemohon'
             },
             xAxis: {
-                categories: ['Online', 'Dinas', 'Kelurahan', 'MPP'],
-                title: {
-                    text: null
-                }
+                categories: [
+                    'Online',
+                    'Dinas',
+                    'Kelurahan',
+                    'MPP',
+                    'Rusak',
+                    'Kehilangan',
+                    'Pemula',
+                    'Perubahan Data',
+                    'Paket',
+                    'Surat Keterangan',
+                ],
+                crosshair: true
             },
             yAxis: {
-                min: 0,
                 title: {
-                    text: 'Jumlah Cetak',
-                    align: 'high'
-                },
-                labels: {
-                    overflow: 'justify'
+                    useHTML: true,
+                    text: 'Jumlah Cetak'
                 }
             },
             tooltip: {
-                valueSuffix: ' Orang'
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
             },
             plotOptions: {
-                bar: {
-                    dataLabels: {
-                        enabled: true
-                    }
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
                 }
             },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'top',
-                x: -40,
-                y: 80,
-                floating: true,
-                borderWidth: 1,
-                backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
-                shadow: true
-            },
-            credits: {
-                enabled: false
-            },
             series: [{
-                name: 'Online',
-                data: [ {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }} ]
-            }, {
-                name: 'Dinas',
-                data: [ {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }}]
-            }, {
-                name: 'Kelurahan',
-                data: [ {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }} ]
-            }, {
-                name: 'MPP',
-                data: [ {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }}, {{ $value->total ?? 0 }} ]
+                name: 'Jumlah Cetak',
+                data: [{{$value->total ?? 0}}, {{$value->total ?? 0}}, {{$value->total ?? 0}}, {{$value->total ?? 0}}, {{$value->total ?? 0}}, {{$value->total ?? 0}}, {{$value->total ?? 0}},
+                {{$value->total ?? 0}}, {{$value->total ?? 0}}, {{$value->total ?? 0}}
+                ]
+
             }]
         });
         </script>
-        @endsection
+        @endsection --}}
     </div>
 </div>
 @endsection

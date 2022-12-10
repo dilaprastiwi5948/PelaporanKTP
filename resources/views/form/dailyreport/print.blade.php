@@ -16,6 +16,12 @@
         .page-break {
             page-break-after: always;
         }
+        .border-total {
+            border: 2px solid rgb(54, 106, 201);
+        }
+        .border {
+            border-color:rgb(54, 106, 201);
+        }
     </style>
 </head>
 <body>
@@ -27,26 +33,26 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-xs-3 col-sm-4">
-                        <div class="thumbnail">
+                        <div class="thumbnail border-total">
                             <div class="caption">
-                                <h5>Jumlah pemohon</h5>
+                                <h4><strong>Total jumlah pemohon</strong></h4>
                                 <h5><span class="label label-primary">{{$data->total_all}} Pemohon</span></h5>
                             </div>
                         </div>
                     </div>
                     <div class="col-xs-3 col-sm-4">
-                        <div class="thumbnail">
+                        <div class="thumbnail border">
                             <div class="caption">
                                 <h5>Jumlah pemohon dalam daerah</h5>
-                                <h5><span class="label label-primary">{{$data->total_in_area}} pemohon</span></h5>
+                                <h5><span class="label label-success">{{$data->total_in_area}} pemohon</span></h5>
                             </div>
                         </div>
                     </div>
                     <div class="col-xs-3 col-sm-4">
-                        <div class="thumbnail">
+                        <div class="thumbnail border">
                             <div class="caption">
                                 <h5>Jumlah pemohon luar daerah</h5>
-                                <h5><span class="label label-primary">{{$data->total_out_area}} pemohon</span></h5>
+                                <h5><span class="label label-danger">{{$data->total_out_area}} pemohon</span></h5>
                             </div>
                         </div>
                     </div>
@@ -112,7 +118,7 @@
                         <!-- End  Basic Table  -->
                     </div>
                 </div>
-                <div class="panel panel-default" id="printable">
+                {{-- <div class="panel panel-default" id="printable">
                     <div class="panel-heading">
                         <label for="">Pemohon pada tanggal {{date('d F Y', strtotime(request()->get('date')))}}</label>
                     </div>
@@ -152,7 +158,7 @@
                         </table>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     <!-- jQuery Js -->
