@@ -74,36 +74,6 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                      <!--   Kitchen Sink -->
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Laporan operator
-                            </div>
-                            <div class="panel-body">
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Nama Operator</th>
-                                                <th>Jumlah cetak</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($data->operator as $item)
-                                                <tr>
-                                                    <td>{{$item->user->username}}</td>
-                                                    <td>{{$item->total}} Pemohon</td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                         <!-- End  Kitchen Sink -->
-                         </div>
-                    <div class="col-md-6">
-                         <!--   Basic Table  -->
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 Laporan pemohon berdasarkan permohonan
@@ -118,19 +88,73 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($data->category as $item)
-                                                @foreach ($item as $value)
-                                                    <tr>
-                                                        <td>{{$value->name}}</td>
-                                                        <td>{{$value->total ?? 0}} Pemohon</td>
-                                                    </tr>
-                                                @endforeach
+                                            @foreach ($data->explanation as $item)
+                                                <tr>
+                                                    <td>{{$item->name}}</td>
+                                                    <td>{{$item->total ?? 0}} Pemohon</td>
+                                                </tr>
                                             @endforeach
                                     </table>
                                 </div>
                             </div>
                         </div>
-                          <!-- End  Basic Table  -->
+                    <!--   Kitchen Sink -->
+                        <!-- End  Kitchen Sink -->
+                    </div>
+                    <div class="col-md-6">
+                        <!--   Basic Table  -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Laporan pemohon berdasarkan permohonan
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Nama Kategori</th>
+                                                <th>Jumlah cetak</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($data->submission as $item)
+                                                <tr>
+                                                    <td>{{$item->name}}</td>
+                                                    <td>{{$item->total ?? 0}} Pemohon</td>
+                                                </tr>
+                                            @endforeach
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End  Basic Table  -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Laporan operator
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Nama Operator</th>
+                                            <th>Jumlah cetak</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($data->operator as $item)
+                                            <tr>
+                                                <td>{{$item->user->username}}</td>
+                                                <td>{{$item->total}} Pemohon</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
